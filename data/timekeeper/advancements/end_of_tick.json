@@ -1,0 +1,10 @@
+{
+    "criteria": {
+        "requirement": {
+            "trigger": "minecraft:enter_block"
+        }
+    },
+    "rewards": {
+        "function": "timekeeper:end_of_tick"
+    }
+}
