@@ -1,6 +1,6 @@
 Bossbar.add(timekeeper:mspt, "MSPT: &<$mspt>");
 bossbar set timekeeper:mspt players @a;
-bossbar set timekeeper:mspt max 100c;
+bossbar set timekeeper:mspt max 100;
 
 TextProp.nbt(
     propertyName = "colored_average",
