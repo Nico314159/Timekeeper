@@ -2,23 +2,17 @@ Bossbar.add(timekeeper:mspt, "MSPT: &<$mspt>");
 bossbar set timekeeper:mspt players @a;
 bossbar set timekeeper:mspt max 100;
 
-TextProp.nbt(
-    propertyName = "colored_average",
-    type = storage,
-    source = "timekeeper:storage",
-    path = text,
-    interpret = true
-);
+TextProp.nbt("colored_average", storage, source="timekeeper:storage", path=text, interpret=true);
 
 function __tick__() {
-    if ($enabled == 0) return 0;
+    if ($enabled == 0) {return 0;}
     $given = false;
     bossbar set timekeeper:mspt visible true;
     worldborder set 59000000 0;
     worldborder set 59001000 1;
 }
 
-new advancements(end_of_tick) {
+new advancement(end_of_tick) {
     "criteria": {
         "requirement": {
             "trigger": "minecraft:enter_block"
@@ -30,8 +24,8 @@ new advancements(end_of_tick) {
 }
 function end_of_tick() {
     Advancement.revoke(@s, only, end_of_tick);
-    if ($enabled == 0) return 0;
-    if ($given) return 0;
+    if ($enabled == 0) {return 0;}
+    if ($given) {return 0;}
     $given = true;
     $mspt = worldborder get;
     $mspt -= 59000000;
@@ -55,13 +49,13 @@ function end_of_tick() {
     if ($enabled == 0) {
         $average /= $length;
         if ($average > 50) {
-            data modify storage timekeeper:storage text set value '{"score":{"name":"$average","objective":"timekeeper.var"},"bold":true,"color":"red"}';
+            storage::text = '{"score":{"name":"$average","objective":"timekeeper.var"},"bold":true,"color":"red"}';
         }
         if ($average matches 25..50) {
-            data modify storage timekeeper:storage text set value '{"score":{"name":"$average","objective":"timekeeper.var"},"bold":true,"color":"yellow"}';
+            storage::text = '{"score":{"name":"$average","objective":"timekeeper.var"},"bold":true,"color":"yellow"}';
         }
         if ($average < 25) {
-            data modify storage timekeeper:storage text set value '{"score":{"name":"$average","objective":"timekeeper.var"},"bold":true,"color":"green"}';
+            storage::text = '{"score":{"name":"$average","objective":"timekeeper.var"},"bold":true,"color":"green"}';
         }
         Text.tellraw(@a, "&<bold>[Timekeeper] &<aqua>Average MSPT over &<$length> ticks:&<reset> &<colored_average>");
         bossbar set timekeeper:mspt visible false;
