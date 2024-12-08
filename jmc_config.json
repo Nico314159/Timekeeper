@@ -1,6 +1,6 @@
 {
     "namespace": "timekeeper",
-    "description": "A tick profiler for Minecraft 1.19+ datapacks & servers",
+    "description": "A tick profiler for Minecraft 1.21+ datapacks & servers",
     "pack_format": "48",
     "target": "timekeeper.jmc",
     "output": "."

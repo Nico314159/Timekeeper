@@ -1,7 +1,7 @@
 {
     "pack": {
         "pack_format": 48,
-        "description": "A tick profiler for Minecraft 1.20+ datapacks & servers",
+        "description": "A tick profiler for Minecraft 1.21+ datapacks & servers",
         "supported_formats": {
             "min_inclusive": 46,
             "max_inclusive": 50
